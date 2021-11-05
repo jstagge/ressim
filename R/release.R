@@ -18,9 +18,10 @@ release_dec <- function(res_temp){
 		mutate(release_decision_ft3 = case_when(stor_prerelease <= dead_ft3 ~ 0,
                         stor_prerelease <= hedge_ft3  ~ -999,
                         stor_prerelease <= conservation_ft3  ~ release_ft3,						
-                        stor_prerelease <= spill_ft3 & stor_init_ft3 < conservation_ft3  ~ release_ft3,
-                        stor_prerelease <= spill_ft3 & stor_init_ft3 >= conservation_ft3  ~ stor_prerelease - conservation_ft3,
-                        stor_prerelease > spill_ft3  ~ stor_prerelease - spill_ft3						
+                        #stor_prerelease <= spill_ft3 & stor_init_ft3 < conservation_ft3  ~ release_ft3,
+                        #stor_prerelease <= spill_ft3 & stor_init_ft3 >= conservation_ft3  ~ stor_prerelease - conservation_ft3,
+						stor_prerelease <= spill_ft3  ~ release_ft3 + (stor_prerelease - conservation_ft3),
+                        stor_prerelease > spill_ft3  ~ release_ft3 + (stor_prerelease - spill_ft3)						
 						))
 						
 	### Calculate release for hedging
