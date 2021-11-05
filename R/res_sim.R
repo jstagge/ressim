@@ -21,6 +21,15 @@ res_sim <- function(qin_cfs, stage_stor, rule, evap){
 		mutate(spill_ft3 = 43560*elev_to_vol(elev = spill, stage_stor = stage_stor)) %>%
 		mutate(release_ft3 = release_cfs * 60*60*24*30)
 
+	### Check that hedging is set up correctly
+	res_ts <- res_ts %>%
+		mutate(test = hedge_ft3 >= dead_ft3 + release_ft3)
+	if(sum(res_ts$test >0)){
+		stop("Hedging volume must be greater than dead storage plus release volume")
+	}
+	res_ts <- res_ts %>%
+		select(-test)
+
 
 	### Set empty columns
 	res_ts$stor_init_acft <- NA
