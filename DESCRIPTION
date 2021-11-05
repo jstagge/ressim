@@ -1,0 +1,20 @@
+Package: ressim
+Title: Simulation Of Hedging Reservoir
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "James",
+           family = "Stagge",
+           role = c("aut", "cre"),
+           email = "stagge.11@osu.edu",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: What the package does (one paragraph).
+License: use_mit_license()
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports:
+	tidyverse,
+	zoo,
+	lubridate, 
+	dataRetrieval
