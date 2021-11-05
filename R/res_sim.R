@@ -24,7 +24,7 @@ res_sim <- function(qin_cfs, stage_stor, rule, evap){
 	### Check that hedging is set up correctly
 	res_ts <- res_ts %>%
 		mutate(test = hedge_ft3 >= dead_ft3 + release_ft3)
-	if(sum(res_ts$test >0)){
+	if(sum(res_ts$test == 0)){
 		stop("Hedging volume must be greater than dead storage plus release volume")
 	}
 	res_ts <- res_ts %>%
