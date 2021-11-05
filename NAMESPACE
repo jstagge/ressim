@@ -3,6 +3,7 @@
 export(elev_to_area)
 export(elev_to_vol)
 export(hedge_calc)
+export(plot_sop)
 export(release_dec)
 export(res_sim)
 export(vol_to_elev)
